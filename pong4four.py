@@ -198,7 +198,7 @@ def drawing(canvas):
 
     # положение очков на экране
     FONT = 'microsofttaile'
-    font_size = pygame.font.SysFont(FONT, 28)  # поменять шрифт
+    font_size = pygame.font.SysFont(FONT, 28)
 
     score_1 = font_size.render("SCORE 1: " + str(score_left), 1, (247, 219, 240))
     canvas.blit(score_1, (50, 40))
@@ -375,7 +375,7 @@ while True:
                 sys.exit()
 
         pygame.display.update()
-        fps.tick(60)  # частота обновления экраан
+        fps.tick(60)
     if res == 'против ботов':
         drawing(window)
         back_off()
@@ -392,4 +392,4 @@ while True:
                 sys.exit()
 
         pygame.display.update()
-        fps.tick(60)  # частота обновления экраан
+        fps.tick(60)
