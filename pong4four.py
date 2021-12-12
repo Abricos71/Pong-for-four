@@ -46,14 +46,6 @@ STICK = (232, 232, 232)
 BACK = (34, 40, 49)
 
 
-def check_speed():
-    global x_speed, y_speed
-
-    if x_speed == y_speed or x_speed == 0 or y_speed == 0:
-        x_speed = random.randrange(-4, 4)
-        y_speed = random.randrange(-3, 3)
-
-
 def ball_setup():
     global ball_position, ball_speed, x_speed, y_speed
 
@@ -61,9 +53,9 @@ def ball_setup():
     x_speed = random.randrange(-4, 4)
     y_speed = random.randrange(-3, 3)
 
-    check_speed()
-    check_speed()
-    check_speed()
+    while x_speed == y_speed or x_speed == 0 or y_speed == 0:
+        x_speed = random.randrange(-4, 4)
+        y_speed = random.randrange(-3, 3)
 
     ball_speed = [x_speed, -y_speed]
 
@@ -218,7 +210,7 @@ def back_off():
     global ball_position, ball_speed, score_left, score_right, score_up, score_down, score_index
 
     if int(ball_position[0]) <= ball_size + racket_width and int(ball_position[1]) in range(
-            racket1_position[1] - racket_height_hf - 5, racket1_position[1] + racket_height_hf + 5):
+            racket1_position[1] - racket_height_hf - 10, racket1_position[1] + racket_height_hf + 10):
         ball_speed[0] = -ball_speed[0]
         ball_speed[0] *= 1.15  # увеличении скорости после отбития
         ball_speed[1] *= 1.15  # увеличении скорости после отбития
@@ -231,7 +223,7 @@ def back_off():
         score_index = 0
 
     if int(ball_position[0]) >= SIDE - ball_size - racket_width and int(ball_position[1]) in range(
-            racket2_position[1] - racket_height_hf - 5, racket2_position[1] + racket_height_hf + 5):
+            racket2_position[1] - racket_height_hf - 10, racket2_position[1] + racket_height_hf + 10):
         ball_speed[0] = -ball_speed[0]
         ball_speed[0] *= 1.15
         ball_speed[1] *= 1.15
@@ -244,7 +236,7 @@ def back_off():
         score_index = 0
 
     if int(ball_position[1]) <= ball_size + racket_width and int(ball_position[0]) in range(
-            racket3_position[1] - racket_height_hf - 5, racket3_position[1] + racket_height_hf + 5):
+            racket3_position[1] - racket_height_hf - 10, racket3_position[1] + racket_height_hf + 10):
         ball_speed[1] = -ball_speed[1]
         ball_speed[0] *= 1.15
         ball_speed[1] *= 1.15
@@ -257,13 +249,13 @@ def back_off():
         score_index = 0
 
     if int(ball_position[1]) >= SIDE - ball_size - racket_width and int(ball_position[0]) in range(
-            racket4_position[1] - racket_height_hf - 5, racket4_position[1] + racket_height_hf + 5):
+            racket4_position[1] - racket_height_hf - 10, racket4_position[1] + racket_height_hf + 10):
         ball_speed[1] = -ball_speed[0]
         ball_speed[0] *= 1.15
         ball_speed[1] *= 1.15
         score_index = 4
         sound(True)
-    elif int(ball_position[1]) >= SIDE - ball_size - racket_width + 5:
+    elif int(ball_position[1]) >= SIDE - ball_size - racket_width + 10:
         sound(False)
         score_counting()
         ball_setup()
