@@ -248,14 +248,14 @@ def back_off():
         ball_setup()
         score_index = 0
 
-    if int(ball_position[1]) >= SIDE - ball_size - racket_width and int(ball_position[0]) in range(
+    if int(ball_position[1]) >= SIDE - ball_size - racket_width - 15 and int(ball_position[0]) in range(
             racket4_position[1] - racket_height_hf - 10, racket4_position[1] + racket_height_hf + 10):
         ball_speed[1] = -ball_speed[0]
         ball_speed[0] *= 1.15
         ball_speed[1] *= 1.15
         score_index = 4
         sound(True)
-    elif int(ball_position[1]) >= SIDE - ball_size - racket_width + 10:
+    elif int(ball_position[1]) >= SIDE - ball_size - racket_width + 15:
         sound(False)
         score_counting()
         ball_setup()
